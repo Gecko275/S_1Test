@@ -9,6 +9,8 @@ class CGame
 {
 private:
 	CBackgrounds backgrounds;
+	CCard Deck[13][4];
+	int DeckCards[52];
 
 	bool running;
 

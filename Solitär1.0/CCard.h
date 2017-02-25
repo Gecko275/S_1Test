@@ -31,10 +31,14 @@ private:
 	sf::Sprite sideSprite;
 public:
 	CCard(int in_value, int in_symbol);
+	CCard();
 
 	sf::Sprite getSprite();
 
 	void translate(float n_PosX, float n_PosY);
+
+	static void createDeck(CCard n_Deck[13][4]);
+	static void shuffleDeck(int shuffleStack[52]);
 };
 
 #endif

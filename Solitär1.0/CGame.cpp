@@ -1,5 +1,7 @@
 #include "CGame.h"
 
+#include <iostream>
+
 void CGame::WindowEvents()
 {
 	sf::Event event;
@@ -19,8 +21,12 @@ void CGame::WindowEvents()
 
 CGame::CGame()
 {
+	srand(time(NULL));
+
 	running = true;
 	window.create(sf::VideoMode(1280, 720), "Solitaer");
+	CCard::createDeck(Deck);
+	CCard::shuffleDeck(DeckCards);
 }
 
 bool CGame::isRunning()
@@ -30,7 +36,7 @@ bool CGame::isRunning()
 
 void CGame::Run()
 {
-	window.clear();
+	window.clear(sf::Color::Green);
 	debug();
 	backgrounds.DrawPlayfield(window);
 	WindowEvents();
@@ -39,7 +45,6 @@ void CGame::Run()
 
 void CGame::debug()
 {
-	CCard t_Card(2, 3);
-	t_Card.translate(300.0f, 100.0f);
-	window.draw(t_Card.getSprite());
+	Deck[3][2].translate(300.0f, 100.0f);
+	window.draw(Deck[3][2].getSprite());
 }
