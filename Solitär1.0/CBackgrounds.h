@@ -10,6 +10,10 @@ public:
 	CBackgrounds();
 
 	void DrawPlayfield(sf::RenderWindow& window);
+	static float getRight(int num);
+	static float getTop(int num);
+	static float getLeft(int num);
+	static float getDown(int num);
 private:
 	float scale;
 

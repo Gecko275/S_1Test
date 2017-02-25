@@ -1,4 +1,5 @@
 #include "CCard.h"
+#include "CBackgrounds.h"
 
 CCard::CCard(int in_value, int in_symbol)
 {
@@ -65,6 +66,7 @@ void CCard::createDeck(CCard n_Deck[13][4])
 		for (int in_symbol = 0; in_symbol < 4; in_symbol++)
 		{
 			n_Deck[in_value][in_symbol] = CCard(in_value + 1, in_symbol);
+			n_Deck[in_value][in_symbol].translate(CBackgrounds::getLeft(1), CBackgrounds::getTop(1));
 		}
 	}
 }
@@ -91,3 +93,29 @@ void CCard::shuffleDeck(int shuffleStack[52])
 		}
 	}
 }
+
+void CCard::createStacks(CCard n_Deck[13][4], int Deck[52], int Stack[7][52])
+{
+	int takenCards = 0;
+	for (int i = 0; i < 7; i++)
+	{
+		for (int j = 0; j <= i; j++)
+		{
+			Stack[i][j] = Deck[takenCards];
+			n_Deck[getValuefromNumber(Deck[takenCards])][getSymbolfromNumber(Deck[takenCards])].translate(CBackgrounds::getLeft(i+2), CBackgrounds::getTop(i+2) + 20*j);
+			takenCards++;
+		}
+	}
+}
+
+int CCard::getValuefromNumber(int num)
+{
+	return num % 13;
+}
+
+int CCard::getSymbolfromNumber(int num)
+{
+	return int(num / 13);
+}
+
+
