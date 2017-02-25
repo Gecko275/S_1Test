@@ -3,10 +3,12 @@
 
 #include <iostream>
 
+#include "CGame.h"
+
 int main()
 {
-	Game game;
-	while (game.isRunnning())
+	CGame game;
+	while (game.isRunning())
 	{
 		game.Run();
 	}
