@@ -23,6 +23,7 @@ private:
 	int symbol;
 
 	bool flipped;
+	float scale;
 
 	sf::Texture Backside;
 	sf::Texture Frontside;
@@ -32,6 +33,8 @@ public:
 	CCard(int in_value, int in_symbol);
 
 	sf::Sprite getSprite();
+
+	void translate(float n_PosX, float n_PosY);
 };
 
 #endif

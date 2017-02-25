@@ -2,9 +2,12 @@
 
 CCard::CCard(int in_value, int in_symbol)
 {
+	scale = 0.6f;
 	value = in_value;
 	symbol = in_symbol;
 	flipped = true;
+
+	sideSprite.setScale(scale, scale);
 
 	Backside.loadFromFile("Textures\\Backside.png");
 	std::string imgPath = "Textures\\";
@@ -44,4 +47,9 @@ sf::Sprite CCard::getSprite()
 		sideSprite.setTexture(Backside);
 	}
 	return sideSprite;
+}
+
+void CCard::translate(float n_PosX, float n_PosY)
+{
+	sideSprite.setPosition(n_PosX, n_PosY);
 }

@@ -31,10 +31,15 @@ bool CGame::isRunning()
 void CGame::Run()
 {
 	window.clear();
+	debug();
+	backgrounds.DrawPlayfield(window);
 	WindowEvents();
 	window.display();
 }
 
 void CGame::debug()
 {
+	CCard t_Card(2, 3);
+	t_Card.translate(300.0f, 100.0f);
+	window.draw(t_Card.getSprite());
 }

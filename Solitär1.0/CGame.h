@@ -3,11 +3,13 @@
 #define CGAME_HPP
 
 #include "CCard.h"
+#include "CBackgrounds.h"
 
 class CGame
 {
 private:
-	
+	CBackgrounds backgrounds;
+
 	bool running;
 
 	void WindowEvents();
@@ -19,6 +21,7 @@ public:
 
 	bool isRunning();
 	void Run();
+	
 
 	/**/
 	void debug();

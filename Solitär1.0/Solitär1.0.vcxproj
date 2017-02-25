@@ -153,6 +153,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Card.cpp" />
+    <ClCompile Include="CBackgrounds.cpp" />
     <ClCompile Include="CCard.cpp" />
     <ClCompile Include="CGame.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -163,6 +164,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Card.h" />
+    <ClInclude Include="CBackgrounds.h" />
     <ClInclude Include="CCard.h" />
     <ClInclude Include="CGame.h" />
     <ClInclude Include="Game.h" />
