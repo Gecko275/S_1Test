@@ -59,6 +59,23 @@ void CCard::translate(float n_PosX, float n_PosY)
 	sideSprite.setPosition(n_PosX, n_PosY);
 }
 
+void CCard::moveDeckCards(int currDeckSize, int upperCard, CCard n_Deck[13][4], int Deck[52])
+{
+	//If Deck is empty
+	if (upperCard > 51)
+	{
+		for (int i = upperCard - 1; i >= currDeckSize; i--)
+		{
+			n_Deck[getValuefromNumber(Deck[i])][getSymbolfromNumber(Deck[i])].translate(CBackgrounds::getLeft(1), CBackgrounds::getTop(1));
+		}
+	}
+	else
+	{
+		n_Deck[getValuefromNumber(Deck[upperCard])][getSymbolfromNumber(Deck[upperCard])].translate(CBackgrounds::getLeft(0), CBackgrounds::getRight(0));
+	}
+
+}
+
 void CCard::createDeck(CCard n_Deck[13][4])
 {
 	for (int in_value = 0; in_value < 13; in_value++)

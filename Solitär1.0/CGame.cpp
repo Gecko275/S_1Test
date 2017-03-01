@@ -21,21 +21,27 @@ void CGame::WindowEvents()
 
 void CGame::Draw()
 {
-	/*for (int in_value = 0; in_value<13; in_value++)
-	{
-		for (int in_symbol = 0; in_symbol < 4; in_symbol++)
-		{
-			backgrounds.DrawPlayfield(window);
-			window.draw(Deck[in_value][in_symbol].getSprite());
-		}
-	}*/
 	backgrounds.DrawPlayfield(window);
+	DrawGameStacks();
+	DrawDeckStacks();
+}
+
+void CGame::DrawGameStacks()
+{
 	for (int i = 0; i < 7; i++)
 	{
 		for (int j = 0; j < StackSize[i]; j++)
 		{
 			window.draw(Deck[CCard::getValuefromNumber(StackCards[i][j])][CCard::getSymbolfromNumber(StackCards[i][j])].getSprite());
 		}
+	}
+}
+
+void CGame::DrawDeckStacks()
+{
+	for (int i = upperCard; i < maxDeckSize; i++)
+	{
+		window.draw(Deck[CCard::getValuefromNumber(DeckCards[i])][CCard::getSymbolfromNumber(DeckCards[i])].getSprite());
 	}
 }
 
@@ -55,6 +61,9 @@ CGame::CGame()
 			StackSize[i] = i + 1;
 		}
 	}
+	//DeckSize is 52-28 after creating the Stacks
+	currDeckSize = 24;
+	upperCard = 28;
 }
 
 bool CGame::isRunning()

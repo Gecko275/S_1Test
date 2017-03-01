@@ -13,11 +13,17 @@ private:
 	int DeckCards[52];
 	int StackCards[7][52];
 	int StackSize[7];
+	const int maxDeckSize = 52;
+	int upperCard;
+	int currDeckSize;
 
 	bool running;
 
 	void WindowEvents();
 	void Draw();
+
+	void DrawGameStacks();
+	void DrawDeckStacks();
 public:
 	CGame();
 
