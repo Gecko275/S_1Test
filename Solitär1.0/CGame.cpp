@@ -13,6 +13,14 @@ void CGame::WindowEvents()
 			window.close();
 			running = false;
 			break;
+		case sf::Event::MouseButtonPressed:
+			if (event.mouseButton.button == sf::Mouse::Left)
+			{
+				if (DeckClicked(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y))
+				{
+					CCard::moveDeckCards(currDeckSize, upperCard, Deck, DeckCards);
+				}
+			}
 		default:
 			break;
 		}
@@ -39,10 +47,20 @@ void CGame::DrawGameStacks()
 
 void CGame::DrawDeckStacks()
 {
-	for (int i = upperCard; i < maxDeckSize; i++)
+	for (int i = maxDeckSize - 1; i >= upperCard; i--)
 	{
 		window.draw(Deck[CCard::getValuefromNumber(DeckCards[i])][CCard::getSymbolfromNumber(DeckCards[i])].getSprite());
 	}
+	for (int i = maxDeckSize - currDeckSize; i < upperCard; i++)
+	{
+		window.draw(Deck[CCard::getValuefromNumber(DeckCards[i])][CCard::getSymbolfromNumber(DeckCards[i])].getSprite());
+	}
+}
+
+bool CGame::DeckClicked(int Pos_x, int Pos_y)
+{
+	return (Pos_x > CBackgrounds::getLeft(1) && Pos_x < CBackgrounds::getRight(1) && Pos_y > CBackgrounds::getTop(1) && Pos_y < CBackgrounds::getBottom(1));
+
 }
 
 CGame::CGame()
@@ -83,11 +101,8 @@ void CGame::Run()
 
 void CGame::debug()
 {
-	//Deck[3][2].translate(300.0f, 100.0f);
-
-	for (int i = 0; i < 13; i++)
+	for (int j = 0; j < 7; j++)
 	{
-		window.draw(Deck[i][3].getSprite());
+		window.draw(Deck[CCard::getValuefromNumber(StackCards[6][j])][CCard::getSymbolfromNumber(StackCards[6][j])].getSprite());
 	}
-	window.draw(Deck[4][2].getSprite());
 }

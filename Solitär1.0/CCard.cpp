@@ -1,6 +1,8 @@
 #include "CCard.h"
 #include "CBackgrounds.h"
 
+#include <iostream>
+
 CCard::CCard(int in_value, int in_symbol)
 {
 	scale = 0.6f;
@@ -59,19 +61,23 @@ void CCard::translate(float n_PosX, float n_PosY)
 	sideSprite.setPosition(n_PosX, n_PosY);
 }
 
-void CCard::moveDeckCards(int currDeckSize, int upperCard, CCard n_Deck[13][4], int Deck[52])
+void CCard::moveDeckCards(int& currDeckSize, int& upperCard, CCard n_Deck[13][4], int Deck[52])
 {
 	//If Deck is empty
 	if (upperCard > 51)
 	{
-		for (int i = upperCard - 1; i >= currDeckSize; i--)
+		for (int i = upperCard - 1; i > 52-currDeckSize; i--)
 		{
 			n_Deck[getValuefromNumber(Deck[i])][getSymbolfromNumber(Deck[i])].translate(CBackgrounds::getLeft(1), CBackgrounds::getTop(1));
 		}
+		upperCard = 28;
 	}
 	else
 	{
-		n_Deck[getValuefromNumber(Deck[upperCard])][getSymbolfromNumber(Deck[upperCard])].translate(CBackgrounds::getLeft(0), CBackgrounds::getRight(0));
+		//std::cout << "currDeckSize:" << currDeckSize << "; upperCard:" << upperCard << std::endl;
+		//std::cout << "Value:" << getValuefromNumber(Deck[upperCard]) << "; Symbol:" << getSymbolfromNumber(Deck[upperCard]);
+		n_Deck[getValuefromNumber(Deck[upperCard])][getSymbolfromNumber(Deck[upperCard])].translate(CBackgrounds::getLeft(0), CBackgrounds::getTop(0));
+		upperCard++;
 	}
 
 }

@@ -24,6 +24,8 @@ private:
 
 	void DrawGameStacks();
 	void DrawDeckStacks();
+
+	bool DeckClicked(int Pos_x, int Pos_y);
 public:
 	CGame();
 

@@ -145,7 +145,7 @@ float CBackgrounds::getRight(int num)
 	return (getLeft(num) + 150*0.6f);
 }
 
-float CBackgrounds::getDown(int num)
+float CBackgrounds::getBottom(int num)
 {
 	return (getTop(num) + 250 * 0.6f);
 }

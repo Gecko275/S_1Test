@@ -13,7 +13,7 @@ public:
 	static float getRight(int num);
 	static float getTop(int num);
 	static float getLeft(int num);
-	static float getDown(int num);
+	static float getBottom(int num);
 private:
 	float scale;
 
